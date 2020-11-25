@@ -1,24 +1,39 @@
-import logo from './logo.svg';
+import React from "react";
+import {BrowserRouter,Route, Switch,Redirect}from "react-router-dom";
 import './App.css';
+import Navbar from "./components/navbar/navbar";
+import AddItem from "./components/pages/addItem/additem";
+import PushItem from "./components/pages/pushItems/pushItm";
+import RemoveItem from "./components/pages/removeItem/removeItem";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        
+        <Navbar/>
+
+        <Switch>
+        <Route
+          exact
+          path={`/addItems`}
+          component={AddItem} 
+          />
+        <Route
+          exact
+          path={`/pushItems`}
+          component={PushItem}
+        /> 
+        <Route
+          exact
+          path={`/removeItems`}
+          component={RemoveItem}
+        /> 
+        <Redirect from="/" to='addItems' /> 
+      </Switch>
+      </div>
+    </BrowserRouter>
   );
 }
 

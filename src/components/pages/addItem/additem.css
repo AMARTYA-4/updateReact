@@ -1,0 +1,17 @@
+.formArea{
+    text-align: left;
+    margin:auto;
+    margin-top:100px;
+    width:90%;
+}
+.singleAdd{
+    margin:60px;
+    
+}
+.floatToast{
+    position: fixed;
+    
+    right:2%;
+    top:8%;
+    width:400px;
+}
