@@ -5,7 +5,7 @@ import Navbar from "./components/navbar/navbar";
 import AddItem from "./components/pages/addItem/additem";
 import PushItem from "./components/pages/pushItems/pushItm";
 import RemoveItem from "./components/pages/removeItem/removeItem";
-
+import SignIn from "./components/pages/signIn/signIn";
 
 function App() {
   return (
@@ -29,6 +29,11 @@ function App() {
           exact
           path={`/removeItems`}
           component={RemoveItem}
+        /> 
+        <Route
+          exact
+          path={`/signIn`}
+          component={SignIn}
         /> 
         <Redirect from="/" to='addItems' /> 
       </Switch>

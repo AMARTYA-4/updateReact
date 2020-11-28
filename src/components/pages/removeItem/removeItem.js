@@ -4,7 +4,10 @@ import Grid from '@material-ui/core/Grid';
 import Alert from '@material-ui/lab/Alert';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import "./removeitem.css";
+import { useHistory } from "react-router-dom";
 const RemoveItem=(props)=>{
+    const history=useHistory();
+
     const [allDevice,setAllDevice]=useState("");
     const [classifications,setClassifications]=useState("");
     const [models,setModels]=useState("");
@@ -22,6 +25,14 @@ const RemoveItem=(props)=>{
     const [successMessage,setSuccessMessage]=useState("");
     const [error,setError]=useState(false);
     const [errorMessage,setErrorMessage]=useState("");
+
+
+    useEffect(()=>{
+      const existLoginuser=localStorage.getItem("amdinemail");
+      if(existLoginuser!=="amartya@gm.co"){
+          history.push("/signIn");
+      }
+    },[])
 
     useEffect(()=>{
         fetch("/allDeviceTypes")

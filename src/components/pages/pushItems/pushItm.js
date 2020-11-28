@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Alert from '@material-ui/lab/Alert';
+import { useHistory } from "react-router-dom";
 
 const PushItem=(props)=>{
+    const history=useHistory();
+
     const [color,setColor]=useState("");
     const [colorPushModel,setColorPushModel]=useState("");
 
@@ -23,6 +26,14 @@ const PushItem=(props)=>{
     const [successMessage,setSuccessMessage]=useState("");
     const [error,setError]=useState(false);
     const [errorMessage,setErrorMessage]=useState("");
+
+
+    useEffect(()=>{
+        const existLoginuser=localStorage.getItem("amdinemail");
+        if(existLoginuser!=="amartya@gm.co"){
+            history.push("/signIn");
+        }
+    },[])
 
     const pushColor=()=>{
         setSuccess(false);

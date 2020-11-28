@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState,useEffect} from "react";
+import {useHistory}from "react-router-dom"
 import "./additem.css";
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
@@ -9,6 +10,8 @@ import Alert from '@material-ui/lab/Alert';
 import { json } from "body-parser";
 
 const AddItem=(props)=>{
+    const history=useHistory();
+
     const [alert,setAlert]=useState(false);
     const [alertMessage,setAlertMessage]=useState("");
     const [success,setSuccess]=useState(false);
@@ -60,7 +63,12 @@ const AddItem=(props)=>{
     const [possibleIssue15,setPossibleIssue15]=useState("");
     const [parentModelissue,setParentModelissue]=useState("");
 
-    
+    useEffect(()=>{
+        const existLoginuser=localStorage.getItem("amdinemail");
+        if(existLoginuser!=="amartya@gm.co"){
+            history.push("/signIn");
+        }
+    },[])
 
     const deviceAdd=()=>{
         setAlert(false);
